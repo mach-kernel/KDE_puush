@@ -7,7 +7,7 @@ if [ -z "$PUUSH_API_KEY" ]
 then
   echo "Set the variable PUUSH_API_KEY in /usr/bin/KDE_puush or with 'export PUUSH_API_KEY=\"apiKeyHere\""
   exit
-elif ! [ -r "$1" ]
+elif ! [ -r "screenshot.png" ]
 then
   echo "Something went wrong with Scrot and no screenshot was saved."
   exit
