@@ -16,3 +16,6 @@ example: KDE_puush "-s"
 Requirements:
 Scrot,
 kdebase-kdialog
+
+
+Original puush upload script by blha303/puush-linux
