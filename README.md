@@ -12,5 +12,5 @@ Installation:
 3. Optionally include parameter "-s" behind command to switch from full screenshot to interactive area/current window
 
 Requirements:
-Scrot
+Scrot,
 kdebase-kdialog
