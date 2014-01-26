@@ -19,3 +19,6 @@ qdbus-qt4 org.kde.klipper /klipper setClipboardContents "$link" > /dev/null
 rm screenshot.png
 text=$(qdbus-qt4 org.kde.klipper /klipper getClipboardContents)
 kdialog --passivepopup "Screenshot puushed to $text" 3 --title "Puush" --icon "/home/pecto/puush-linux/puush.png"
+
+
+Original puush upload script by blha303/puush-linux
