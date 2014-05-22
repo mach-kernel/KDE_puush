@@ -1,21 +1,22 @@
 #!/bin/bash
 
 PUUSH_API_KEY=""
-scrot screenshot.png $1
+SCREENSHOT="ss ("$(date +%F)" at "$(date +%T)").png"
+scrot "$SCREENSHOT" $1
 
 if [ -z "$PUUSH_API_KEY" ]
 then
   echo "Set the variable PUUSH_API_KEY in /usr/bin/KDE_puush or with 'export PUUSH_API_KEY=\"apiKeyHere\""
   exit
-elif ! [ -r "screenshot.png" ]
+elif ! [ -r "$SCREENSHOT" ]
 then
   echo "Something went wrong with Scrot and no screenshot was saved."
   exit
 fi
 
-link=$(curl "https://puush.me/api/up" -# -F "k=$PUUSH_API_KEY" -F "z=poop" -F "f=@screenshot.png" | sed -E 's/^.+,(.+),.+,.+$/\1\n/')
+link=$(curl "https://puush.me/api/up" -# -F "k=$PUUSH_API_KEY" -F "z=poop" -F "f=@$SCREENSHOT" | sed -E 's/^.+,(.+),.+,.+$/\1\n/')
 qdbus-qt4 org.kde.klipper /klipper setClipboardContents "$link" > /dev/null
 
-rm screenshot.png
+rm "$SCREENSHOT"
 text=$(qdbus-qt4 org.kde.klipper /klipper getClipboardContents)
 kdialog --passivepopup "Screenshot puushed to $text" 3 --title "Puush" --icon "/home/$USER/puush-linux/puush.png"
